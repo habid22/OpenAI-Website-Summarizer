@@ -7,10 +7,10 @@ const Hero = () => {
         <img src= {logo} alt ="sumz_logo" className='w-28 object-contain' />
       </nav>
       <h1 className="head_text">
-        Summarize Articles with <br
+        Summarize Articles with the <br
         className='max-md:hidden'/>
         <span className='orange_gradient'>
-          OpenAI GPT-4
+          Power of AI.
         </span>
       </h1>
       <h2 className="desc">
