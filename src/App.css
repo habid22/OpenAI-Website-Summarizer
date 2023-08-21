@@ -17,7 +17,7 @@
 }
 
 .main:before {
-  background: #192734;  position: absolute;
+  background: #282c3c;  position: absolute;
   content: "";
   z-index: 2;
   width: 100%;
@@ -83,8 +83,9 @@
 }
 
 .orange_gradient {
-  @apply bg-gradient-to-r from-blue-500 via-purple-600 to-indigo-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent;
 }
+
 
 
 .desc {

@@ -15,13 +15,16 @@ const Demo = () => {
         placeholder="Paste a URL" value="" 
         onChange={() => {}}
         className= "url_input peer"
-        style={{ backgroundColor: '#22303C',  borderColor: 'white' }}
+        style={{ backgroundColor: '#3b4055',  borderColor: 'black' }}
 
         />
 
-        <button type="submit" className="submit_btn peer-focus:border-gray-700 per-focus:text-gray-700"
-        >
-          ⤶
+<button
+  type="submit"
+  className="submit_btn peer-focus:text-gray-700 bg-purple-600 text-white px-4 py-2 rounded-lg ml-2 border-none"
+  style={{ backgroundColor: "#6864f4" }}
+>
+          ➤
 
           </button>
 
