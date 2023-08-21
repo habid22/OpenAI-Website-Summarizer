@@ -6,8 +6,6 @@ export const articleApi = createApi({
         getSummary: builder.query({
             query: (params) => `test`
 
-        })
-    }),
-    
-
+       })
+    })   
 });
