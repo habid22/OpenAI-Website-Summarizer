@@ -12,9 +12,8 @@ const Hero = () => {
       Paste and Click.
     </span>
   </h1>
-  <h2 className="desc">
-    Summarize any article with the power of OpenAI's GPT-4 model.
-  </h2>
+  <h2 className="desc" style={{ color: 'white' }}>
+  Introducing SummarizeLink – effortlessly condense webpage content by pasting the link. Our AI-powered tool delivers instant, concise summaries for articles, blogs, and more. Simplify your reading experience with SummarizeLink!  </h2>
 </header>
   )
 }

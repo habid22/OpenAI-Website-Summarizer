@@ -12,9 +12,11 @@ const Demo = () => {
         <img src={linkIcon} alt="link_icon" className='absolute left-0 my-2 ml-3 w-5'/>
 
         <input type="text" 
-        placeholder="Enter a URL" value="" 
+        placeholder="Paste a URL" value="" 
         onChange={() => {}}
         className= "url_input peer"
+        style={{ backgroundColor: '#22303C',  borderColor: 'white' }}
+
         />
 
         <button type="submit" className="submit_btn peer-focus:border-gray-700 per-focus:text-gray-700"
