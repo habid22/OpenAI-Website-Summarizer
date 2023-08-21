@@ -13,7 +13,7 @@ const Hero = () => {
     </span>
   </h1>
   <h2 className="desc" style={{ color: 'white' }}>
-  Effortlessly condense webpage content by pasting the link. Our AI-powered tool delivers instant, concise summaries for articles, blogs, and more. Simplify your reading experience with SummarizeLink!  </h2>
+  Effortlessly condense webpage content by pasting the link. Our AI-powered tool delivers instant, concise summaries for articles, blogs, and more.</h2>
 </header>
   )
 }

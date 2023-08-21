@@ -21,12 +21,11 @@ const Demo = () => {
 
 <button
   type="submit"
-  className="submit_btn peer-focus:text-gray-700 bg-purple-600 text-white px-4 py-2 rounded-lg ml-2 border-none"
+  className="submit_btn peer-focus:text-gray-700 bg-purple-600 text-white px-4 py-2 rounded-lg ml-2 border-none flex items-center"
   style={{ backgroundColor: "#6864f4" }}
 >
-          ➤
-
-          </button>
+  <span className="mx-auto">➤</span>
+</button>
 
       </form>
       {/* Browser URL History*/}
