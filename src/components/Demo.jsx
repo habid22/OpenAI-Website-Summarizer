@@ -4,26 +4,27 @@ import { useLazyGetSummaryQuery } from '../services/article';
 
 const Demo = () => {
   const [article, setArticle] = useState({
-    url: '',
-    summary: '',
+    url: "",
+    summary: "",
   });
 
   const [getSummary, { error, isFetching}] = useLazyGetSummaryQuery();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await getSummary({articleUrl: article.url});
-    if (data?.summary){
-      const newArticle = {...article, summary: data.summary};
-
-      setArticle(newArticle);
-
-      console.log("okay");
-
+    try {
+      const { data } = await getSummary({ articleUrl: article.url });
+      
+      if (data?.summary) {
+        const newArticle = { ...article, summary: data.summary };
+        setArticle(newArticle);
+        console.log(newArticle);
+      }
+    } catch (e) {
+      console.error('Error fetching summary:', e);
+      // Handle the error, show an error message, etc.
     }
-
-
-  }
+  };
 
 
 
@@ -39,7 +40,7 @@ const Demo = () => {
 
         <img src={linkIcon} alt="link_icon" className='absolute left-0 my-2 ml-3 w-5'/>
 
-        <input type="text" 
+        <input type="url" 
         placeholder="Paste a URL" 
         value={article.url}
         onChange={(e) => setArticle({...
