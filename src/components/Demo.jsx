@@ -4,8 +4,8 @@ import { useLazyGetSummaryQuery } from '../services/article';
 
 const Demo = () => {
   const [article, setArticle] = useState({
-    url: "",
-    summary: "",
+    url: '',
+    summary: '',
   });
 
   const [getSummary, { error, isFetching}] = useLazyGetSummaryQuery();
@@ -13,19 +13,19 @@ const Demo = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("this works");
       const { data } = await getSummary({ articleUrl: article.url });
-      
+  
       if (data?.summary) {
-        const newArticle = { ...article, summary: data.summary };
+        const newArticle = { ...article, summary: data.summary }; // Change response.data.summary to data.summary
         setArticle(newArticle);
         console.log(newArticle);
+        console.log("hi");
       }
-    } catch (e) {
-      console.error('Error fetching summary:', e);
-      // Handle the error, show an error message, etc.
+    } catch (error) {
+      console.error('Error fetching summary:', error);
     }
   };
-
 
 
 
@@ -43,9 +43,9 @@ const Demo = () => {
         <input type="url" 
         placeholder="Paste a URL" 
         value={article.url}
-        onChange={(e) => setArticle({...
-          article, 
-          url: e.target.value})}
+        onChange={(e) => setArticle({ ...
+        article, 
+        url: e.target.value})}
         required
         className= "url_input peer"
         style={{ backgroundColor: '#3b4055',  borderColor: 'black' }}
