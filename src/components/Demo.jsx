@@ -8,23 +8,41 @@ const Demo = () => {
     summary: '',
   });
 
+  const [allArticles, setAllArticles] = useState([]);
+
   const [getSummary, { error, isFetching}] = useLazyGetSummaryQuery();
+
+  useEffect(() => {
+    const articlesFromLocalStorage = JSON.parse(
+      localStorage.getItem('articles')
+    )
+
+    if (articlesFromLocalStorage) {
+      setAllArticles(articlesFromLocalStorage)
+    }
+
+
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
+   
       console.log("this works");
       const { data } = await getSummary({ articleUrl: article.url });
   
       if (data?.summary) {
         const newArticle = { ...article, summary: data.summary }; // Change response.data.summary to data.summary
+        const updatedAllArticles = [newArticle, 
+          ...allArticles];
+
+
         setArticle(newArticle);
-        console.log(newArticle);
-        console.log("hi");
+        setAllArticles(updatedAllArticles);
+
+        localStorage.setItem('articles', JSON.stringify(updatedAllArticles));
+      
       }
-    } catch (error) {
-      console.error('Error fetching summary:', error);
-    }
+    
   };
 
 
@@ -62,7 +80,31 @@ const Demo = () => {
 
             </form>
             {/* Browser URL History*/}
+            <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
+              {allArticles.map((item, index) => (
+                <div
+                key={`link-${index}`}
+                onClick={() => setArticle(item)}
+                className="link_card"
+                >
+                  <div className="copy-btn">
+                    <img 
+                      src={copy}
+                      alt="copy_icon"
+                      className="w-[40%] h-[40%] object-contain"
+                    
+                    />
+                  
+                  </div>
+      
+              
+              
+              
+              
+              </div>
+              ))}
           </div>
+        </div>
           {/* Display Results */}
 
 
