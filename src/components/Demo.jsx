@@ -24,6 +24,14 @@ const Demo = () => {
 
   }, []);
 
+  const handleCopy = (copyUrl) => {
+    setCopied(copyUrl);
+    navigator.clipboard.writeText(copyUrl);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
    
@@ -52,33 +60,27 @@ const Demo = () => {
    <section className='mt-16 w-full max-w-xl'>
     {/* Search */}
     <div className='flex flex-col w-full gap-2'>
-      <form className= "relative flex justify-center items-center"
-       onSubmit={handleSubmit}
-       >
+    <form className="relative flex justify-center items-center" onSubmit={handleSubmit}>
+  <img src={linkIcon} alt="link_icon" className="absolute left-0 my-2 ml-3 w-5" />
 
-        <img src={linkIcon} alt="link_icon" className='absolute left-0 my-2 ml-3 w-5'/>
+  <input
+    type="url"
+    placeholder="Paste a URL"
+    value={article.url}
+    onChange={(e) => setArticle({ ...article, url: e.target.value })}
+    required
+    className="url_input peer"
+    style={{ backgroundColor: '#3b4055', borderColor: 'black', color: 'white' }}
+  />
 
-        <input type="url" 
-        placeholder="Paste a URL" 
-        value={article.url}
-        onChange={(e) => setArticle({ ...
-        article, 
-        url: e.target.value})}
-        required
-        className= "url_input peer"
-        style={{ backgroundColor: '#3b4055',  borderColor: 'black' }}
-
-        />
-
-      <button
-        type="submit"
-        className="submit_btn peer-focus:text-gray-700 bg-purple-600 text-white px-4 py-2 rounded-lg ml-2 border-none flex items-center"
-        style={{ backgroundColor: "#6864f4" }}
-      >
-        <span className="mx-auto">➤</span>
-      </button>
-
-            </form>
+  <button
+    type="submit"
+    className="submit_btn peer-focus:text-gray-700 bg-purple-600 text-white px-4 py-2 rounded-lg ml-2 border-none flex items-center"
+    style={{ backgroundColor: '#6864f4', color: 'white' }}
+  >
+    <span className="mx-auto">➤</span>
+  </button>
+</form>
             {/* Browser URL History*/}
             <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
               {allArticles.map((item, index) => (
@@ -87,25 +89,50 @@ const Demo = () => {
                 onClick={() => setArticle(item)}
                 className="link_card"
                 >
-                  <div className="copy-btn">
+                  <div className="copy-btn" onClick={() => 
+                    handleCopy(item.url)}>
                     <img 
-                      src={copy}
+                      src={copy == item.url ? tick : copy}
                       alt="copy_icon"
-                      className="w-[40%] h-[40%] object-contain"
+                      className="w-[100%] h-[40%] object-contain"
                     
                     />
                   
                   </div>
-      
-              
-              
-              
-              
+                <p className='flex-1 font-satoshi text-blue-700 font-medium text-sm truncate'>
+                {item.url}
+              </p>
               </div>
               ))}
           </div>
         </div>
-          {/* Display Results */}
+        {/* Display Results */}
+        <div className='my-10 max-w-full flex justify-center items-center'>
+        {isFetching ? (
+          <img src={loader} alt='loader' className='w-20 h-20 object-contain' />
+        ) : error ? (
+          <p className='font-inter font-bold text-black text-center'>
+            Well, that wasn't supposed to happen...
+            <br />
+            <span className='font-satoshi font-normal text-gray-700'>
+              {error?.data?.error}
+            </span>
+          </p>
+        ) : (
+          article.summary && (
+            <div className='flex flex-col gap-3'>
+              <h2 className='font-satoshi font-bold text-white text-xl'>
+                Article <span className='blue_gradient'>Summary</span>
+              </h2>
+              <div className='summary_box black-background'>
+                <p className='font-inter font-medium text-sm text-white'>
+                  {article.summary}
+                </p>
+              </div>
+            </div>
+          )
+        )}
+      </div>
 
 
    </section>
