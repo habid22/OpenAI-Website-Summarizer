@@ -30,6 +30,12 @@ const Demo = () => {
     setTimeout(() => setCopied(false), 3000);
   };
 
+  const handleDelete = (index) => {
+    const updatedArticles = allArticles.filter((_, i) => i !== index);
+    setAllArticles(updatedArticles);
+    localStorage.setItem('articles', JSON.stringify(updatedArticles));
+  };
+
   
 
   const handleSubmit = async (e) => {
@@ -54,7 +60,7 @@ const Demo = () => {
   };
 
 
-
+  // test commit
 
   return (
    <section className='mt-16 w-full max-w-xl'>
