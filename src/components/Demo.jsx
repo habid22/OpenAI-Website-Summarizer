@@ -88,29 +88,22 @@ const Demo = () => {
   </button>
 </form>
             {/* Browser URL History*/}
-            <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
-              {allArticles.map((item, index) => (
-                <div
-                key={`link-${index}`}
-                onClick={() => setArticle(item)}
-                className="link_card"
-                >
-                  <div className="copy-btn" onClick={() => 
-                    handleCopy(item.url)}>
-                    <img 
-                      src={copy == item.url ? tick : copy}
-                      alt="copy_icon"
-                      className="w-[100%] h-[40%] object-contain"
-                    
-                    />
-                  
-                  </div>
-                <p className='flex-1 font-satoshi text-blue-700 font-medium text-sm truncate'>
-                {item.url}
-              </p>
-              </div>
-              ))}
+    <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
+      {allArticles.map((item, index) => (
+        <div key={`link-${index}`} className="link_card">
+          <div className="copy-btn" onClick={() => handleCopy(item.url)}>
+            {/* ... (copy icon code) */}
           </div>
+          <span onClick={() => handleDelete(index)}>
+        🗑️ {/* Trash can emoji */}
+      </span> {/* Delete button */}
+          <p className='flex-1 font-satoshi text-blue-700 font-medium text-sm truncate'>
+            {item.url}
+          </p>
+        </div>
+      ))}
+    </div>
+
         </div>
         {/* Display Results */}
         <div className='my-10 max-w-full flex justify-center items-center'>
