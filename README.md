@@ -1,8 +1,6 @@
-# React + Vite
+# AI Website Summarizer
+## This project was created using React, Vite, TailwindCSS and OpenAI API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I designed, developed, and brought to life a dynamic website utilizing JavaScript, React, Tailwind, and Vite technologies. This innovative platform is capable of summarizing a wide range of web content. By integrating OpenAI's API, I harnessed cutting-edge language processing capabilities, enabling the automatic summarization of content from any given web page. Through meticulous design with React, I crafted an intuitive and responsive user interface, ensuring a seamless experience for users submitting URLs and receiving concise content summaries. To enhance the website's aesthetics and usability, I employed Tailwind CSS, implementing a modern and visually appealing design. Additionally, I optimized data fetching and state management with RTK (Redux Toolkit), ensuring smooth and responsive user interactions throughout the platform.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live Website: https://hassan-ai-summarizer-test.netlify.app/
